@@ -9,14 +9,15 @@ import com.java.crime.util.DBConnection;
 import com.java.crime.exception.*;
 
 
-public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
-
+public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService 
+{
     private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
 
     @Override
-    public Boolean createIncident(Incidents incident) throws ClassNotFoundException, SQLException {
+    public Boolean createIncident(Incidents incident) throws ClassNotFoundException, SQLException 
+    {
         con = DBConnection.getConnection();
         ps = con.prepareStatement(
             "INSERT INTO Incidents (IncidentType, IncidentDate, Location, Description, Status, VictimID, SuspectID, OfficerID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
@@ -36,7 +37,8 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
     }
 
     @Override
-    public int addVictim(Victim victim) throws Exception {
+    public int addVictim(Victim victim) throws Exception 
+    {
         con = DBConnection.getConnection();
         String sql = "INSERT INTO Victims (FirstName, LastName, DateOfBirth, Gender, ContactInfo) VALUES (?, ?, ?, ?, ?)";
         ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -50,15 +52,19 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
         ps.executeUpdate();
 
         rs = ps.getGeneratedKeys();
-        if (rs.next()) {
+        if (rs.next()) 
+        {
             return rs.getInt(1);
-        } else {
+        } 
+        else 
+        {
             throw new SQLException("Failed to retrieve generated VictimID.");
         }
     }
 
     @Override
-    public int addSuspect(Suspects suspect) throws Exception {
+    public int addSuspect(Suspects suspect) throws Exception 
+    {
         con = DBConnection.getConnection();
         String sql = "INSERT INTO Suspects (FirstName, LastName, DateOfBirth, Gender, ContactInfo) VALUES (?, ?, ?, ?, ?)";
         ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -72,15 +78,19 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
         ps.executeUpdate();
 
         rs = ps.getGeneratedKeys();
-        if (rs.next()) {
+        if (rs.next()) 
+        {
             return rs.getInt(1);
-        } else {
+        } 
+        else 
+        {
             throw new SQLException("Failed to retrieve generated SuspectID.");
         }
     }
 
     @Override
-    public int addOfficer(Officers officer) throws Exception {
+    public int addOfficer(Officers officer) throws Exception 
+    {
         con = DBConnection.getConnection();
         String sql = "INSERT INTO Officers (FirstName, LastName, BadgeNumber, RankID, ContactInfo, AgencyID) VALUES (?, ?, ?, ?, ?, ?)";
         ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -95,20 +105,25 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
         ps.executeUpdate();
 
         rs = ps.getGeneratedKeys();
-        if (rs.next()) {
+        if (rs.next()) 
+        {
             return rs.getInt(1);
-        } else {
+        } 
+        else 
+        {
             throw new SQLException("Failed to retrieve generated OfficerID.");
         }
     }
 
     @Override
-    public Boolean updateIncidentStatus(String status, int incidentID) throws Exception, IncidentNotFoundException {
+    public Boolean updateIncidentStatus(String status, int incidentID) throws Exception, IncidentNotFoundException 
+    {
         con = DBConnection.getConnection();
         ps = con.prepareStatement("SELECT 1 FROM Incidents WHERE IncidentID = ?");
         ps.setInt(1, incidentID);
         rs = ps.executeQuery();
-        if (!rs.next()) {
+        if (!rs.next()) 
+        {
             throw new IncidentNotFoundException("Incident ID not found.");
         }
 
@@ -119,7 +134,8 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
     }
     
     @Override
-    public Boolean searchIncidentById(int incidentID) throws SQLException, ClassNotFoundException, IncidentNotFoundException {
+    public Boolean searchIncidentById(int incidentID) throws SQLException, ClassNotFoundException, IncidentNotFoundException 
+    {
         con = DBConnection.getConnection();
         ps = con.prepareStatement("SELECT 1 FROM Incidents WHERE IncidentID = ?");
         ps.setInt(1, incidentID);
@@ -130,12 +146,12 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
             throw new IncidentNotFoundException("Incident ID not found.");
         }
         
-        return rs.next(); // true if found
+        return rs.next(); 
     }
 
-
     @Override
-    public Collection<Incidents> getIncidentsInDateRange(String startDate, String endDate) throws ClassNotFoundException, SQLException {
+    public Collection<Incidents> getIncidentsInDateRange(String startDate, String endDate) throws ClassNotFoundException, SQLException 
+    {
         List<Incidents> list = new ArrayList<>();
         con = DBConnection.getConnection();
         ps = con.prepareStatement("SELECT * FROM Incidents WHERE IncidentDate BETWEEN ? AND ?");
@@ -143,7 +159,8 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
         ps.setDate(2, Date.valueOf(endDate));
         rs = ps.executeQuery();
 
-        while (rs.next()) {
+        while (rs.next()) 
+        {
             list.add(new Incidents(
                 rs.getInt("IncidentID"),
                 rs.getString("IncidentType"),
@@ -161,14 +178,16 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
     }
 
     @Override
-    public Collection<Incidents> searchIncidents(String incidentType) throws ClassNotFoundException, SQLException {
+    public Collection<Incidents> searchIncidents(String incidentType) throws ClassNotFoundException, SQLException 
+    {
         List<Incidents> list = new ArrayList<>();
         con = DBConnection.getConnection();
         ps = con.prepareStatement("SELECT * FROM Incidents WHERE IncidentType = ?");
         ps.setString(1, incidentType);
         rs = ps.executeQuery();
 
-        while (rs.next()) {
+        while (rs.next()) 
+        {
             list.add(new Incidents(
                 rs.getInt("IncidentID"),
                 rs.getString("IncidentType"),
@@ -186,10 +205,10 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
     }
 
     @Override
-    public Report generateIncidentReport(Incidents incident) throws ClassNotFoundException, SQLException, ReportNotGeneratedException {
+    public Report generateIncidentReport(Incidents incident) throws ClassNotFoundException, SQLException, ReportNotGeneratedException 
+    {
         con = DBConnection.getConnection();
 
-        // Step 1: Fetch officer ID, description, and incident status
         int officerID = 0;
         String description = null;
         String incidentStatus = null;
@@ -197,27 +216,30 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
         ps = con.prepareStatement("SELECT OfficerID, Description, Status FROM Incidents WHERE IncidentID = ?");
         ps.setInt(1, incident.getIncidentID());
         rs = ps.executeQuery();
-        if (rs.next()) {
+        if (rs.next()) 
+        {
             officerID = rs.getInt("OfficerID");
             description = rs.getString("Description");
             incidentStatus = rs.getString("Status");
-        } else {
+        } 
+        else 
+        {
             throw new ReportNotGeneratedException("Incident ID not found.");
         }
 
-        // Step 2: Determine report status based on incident status
         String reportStatus;
-        if ("Closed".equalsIgnoreCase(incidentStatus)) {
+        if ("Closed".equalsIgnoreCase(incidentStatus)) 
+        {
             reportStatus = "Finalized";
-        } else {
+        } 
+        else 
+        {
             reportStatus = "Draft";
         }
 
-        // Step 3: Prepare report details
         String reportDetails = "Incident Description: " + description + "\nReported by Officer #" + officerID;
         Date reportDate = new Date(System.currentTimeMillis());
 
-        // Step 4: Insert the report
         ps = con.prepareStatement(
             "INSERT INTO Reports (IncidentID, ReportingOfficer, ReportDate, ReportDetails, Status) VALUES (?, ?, ?, ?, ?)",
             Statement.RETURN_GENERATED_KEYS
@@ -231,9 +253,11 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
 
         int rows = ps.executeUpdate();
 
-        if (rows > 0) {
+        if (rows > 0) 
+        {
             rs = ps.getGeneratedKeys();
-            if (rs.next()) {
+            if (rs.next()) 
+            {
                 int reportId = rs.getInt(1);
                 return new Report(reportId, incident.getIncidentID(), officerID, reportDate, reportDetails, reportStatus);
             }
@@ -244,13 +268,15 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
 
 
     @Override
-    public Victim searchVictim(int victimID) throws Exception, VictimNotFoundException {
+    public Victim searchVictim(int victimID) throws Exception, VictimNotFoundException 
+    {
         con = DBConnection.getConnection();
         ps = con.prepareStatement("SELECT * FROM Victims WHERE VictimID = ?");
         ps.setInt(1, victimID);
         rs = ps.executeQuery();
 
-        if (rs.next()) {
+        if (rs.next()) 
+        {
             return new Victim(
                 rs.getInt("VictimID"),
                 rs.getString("FirstName"),
@@ -259,19 +285,23 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
                 rs.getString("Gender"),
                 rs.getString("ContactInfo")
             );
-        } else {
+        } 
+        else 
+        {
         	throw new VictimNotFoundException("Victim not found with ID: " + victimID);
         }
     }
 
     @Override
-    public Suspects searchSuspect(int suspectID) throws Exception, SuspectNotFoundException {
+    public Suspects searchSuspect(int suspectID) throws Exception, SuspectNotFoundException 
+    {
         con = DBConnection.getConnection();
         ps = con.prepareStatement("SELECT * FROM Suspects WHERE SuspectID = ?");
         ps.setInt(1, suspectID);
         rs = ps.executeQuery();
 
-        if (rs.next()) {
+        if (rs.next()) 
+        {
             return new Suspects(
                 rs.getInt("SuspectID"),
                 rs.getString("FirstName"),
@@ -280,19 +310,23 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
                 rs.getString("Gender"),
                 rs.getString("ContactInfo")
             );
-        } else {
+        } 
+        else 
+        {
         	throw new SuspectNotFoundException("Suspect not found with ID: " + suspectID);
         }
     }
 
     @Override
-    public Officers searchOfficer(int officerID) throws Exception, OfficerNotFoundException {
+    public Officers searchOfficer(int officerID) throws Exception, OfficerNotFoundException 
+    {
         con = DBConnection.getConnection();
         ps = con.prepareStatement("SELECT * FROM Officers WHERE OfficerID = ?");
         ps.setInt(1, officerID);
         rs = ps.executeQuery();
 
-        if (rs.next()) {
+        if (rs.next()) 
+        {
             return new Officers(
                 rs.getInt("OfficerID"),
                 rs.getString("FirstName"),
@@ -302,7 +336,9 @@ public class CrimeAnalysisServiceImpl implements ICrimeAnalysisService {
                 rs.getString("ContactInfo"),
                 rs.getInt("AgencyID")
             );
-        } else {
+        } 
+        else 
+        {
         	throw new OfficerNotFoundException("Officer not found with ID: " + officerID);
         }
     }

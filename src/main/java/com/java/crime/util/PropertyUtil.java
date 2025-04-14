@@ -2,8 +2,10 @@ package com.java.crime.util;
 
 import java.util.ResourceBundle;
 
-public class PropertyUtil {
-    public static String getPropertyString() {
+public class PropertyUtil 
+{
+    public static String getPropertyString() 
+    {
         ResourceBundle rb = ResourceBundle.getBundle("db");
 
         String url = rb.getString("url");

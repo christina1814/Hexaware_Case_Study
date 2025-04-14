@@ -2,7 +2,8 @@ package com.java.crime.model;
 
 import java.sql.Date;
 
-public class Suspects {
+public class Suspects 
+{
     private int SuspectID;
     private String FirstName;
     private String LastName;
@@ -12,7 +13,8 @@ public class Suspects {
 
     public Suspects() {}
 
-    public Suspects(int SuspectID, String FirstName, String LastName, Date DateOfBirth, String Gender, String ContactInfo) {
+    public Suspects(int SuspectID, String FirstName, String LastName, Date DateOfBirth, String Gender, String ContactInfo) 
+    {
         this.SuspectID = SuspectID;
         this.FirstName = FirstName;
         this.LastName = LastName;
@@ -21,56 +23,39 @@ public class Suspects {
         this.ContactInfo = ContactInfo;
     }
 
-    public int getSuspectID() {
-        return SuspectID;
-    }
+    public int getSuspectID() 
+    { return SuspectID; }
+    public void setSuspectID(int SuspectID)
+    { this.SuspectID = SuspectID; }
 
-    public void setSuspectID(int SuspectID) {
-        this.SuspectID = SuspectID;
-    }
+    public String getFirstName() 
+    { return FirstName; }
+    public void setFirstName(String FirstName) 
+    { this.FirstName = FirstName; }
+    
+    public String getLastName() 
+    { return LastName; }
+    public void setLastName(String LastName) 
+    { this.LastName = LastName; }
 
-    public String getFirstName() {
-        return FirstName;
-    }
+    public Date getDateOfBirth() 
+    { return DateOfBirth; }
+    public void setDateOfBirth(Date DateOfBirth) 
+    { this.DateOfBirth = DateOfBirth; }
 
-    public void setFirstName(String FirstName) {
-        this.FirstName = FirstName;
-    }
+    public String getGender() 
+    { return Gender; }
+    public void setGender(String Gender) 
+    { this.Gender = Gender; }
 
-    public String getLastName() {
-        return LastName;
-    }
-
-    public void setLastName(String LastName) {
-        this.LastName = LastName;
-    }
-
-    public Date getDateOfBirth() {
-        return DateOfBirth;
-    }
-
-    public void setDateOfBirth(Date DateOfBirth) {
-        this.DateOfBirth = DateOfBirth;
-    }
-
-    public String getGender() {
-        return Gender;
-    }
-
-    public void setGender(String Gender) {
-        this.Gender = Gender;
-    }
-
-    public String getContactInfo() {
-        return ContactInfo;
-    }
-
-    public void setContactInfo(String ContactInfo) {
-        this.ContactInfo = ContactInfo;
-    }
+    public String getContactInfo() 
+    { return ContactInfo; }
+    public void setContactInfo(String ContactInfo) 
+    { this.ContactInfo = ContactInfo; }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "Suspect [SuspectID=" + SuspectID + ", FirstName=" + FirstName + ", LastName=" + LastName
                 + ", DateOfBirth=" + DateOfBirth + ", Gender=" + Gender + ", ContactInfo=" + ContactInfo + "]";
     }
