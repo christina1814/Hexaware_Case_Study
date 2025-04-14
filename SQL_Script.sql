@@ -81,81 +81,86 @@ CREATE TABLE Reports (
 
 -- Insert into Victims Table
 INSERT INTO Victims (FirstName, LastName, DateOfBirth, Gender, ContactInfo) VALUES
-('John', 'Doe', '1985-06-15', 'Male', '123 Main St, NY'),
-('Alice', 'Smith', '1990-08-22', 'Female', '456 Oak Ave, LA'),
-('Bob', 'Johnson', '1982-03-11', 'Male', '789 Pine Rd, TX'),
-('Emma', 'Brown', '1995-12-30', 'Female', '321 Cedar St, FL'),
-('Charlie', 'Davis', '1987-07-07', 'Male', '654 Birch Ln, IL'),
-('Sophia', 'Wilson', '1993-09-18', 'Female', '987 Elm St, CA'),
-('David', 'Miller', '1980-01-05', 'Male', '159 Maple Ave, WA'),
-('Lily', 'Taylor', '1989-11-21', 'Female', '753 Walnut St, NV'),
-('Ethan', 'Anderson', '1997-05-14', 'Male', '852 Willow Ln, CO'),
-('Olivia', 'Thomas', '1984-04-28', 'Female', '369 Chestnut Rd, AZ');
+('Amit', 'Sharma', '1985-06-15', 'Male', '45 MG Road, Delhi'),
+('Priya', 'Iyer', '1990-08-22', 'Female', '12 Anna Nagar, Chennai'),
+('Rahul', 'Verma', '1982-03-11', 'Male', '67 BTM Layout, Bangalore'),
+('Sneha', 'Patel', '1995-12-30', 'Female', '101 Navrangpura, Ahmedabad'),
+('Arjun', 'Reddy', '1987-07-07', 'Male', '89 Banjara Hills, Hyderabad'),
+('Kavita', 'Menon', '1993-09-18', 'Female', '33 Fort Kochi, Kochi'),
+('Sanjay', 'Mehta', '1980-01-05', 'Male', '58 Sector 17, Chandigarh'),
+('Anjali', 'Desai', '1989-11-21', 'Female', '76 Koregaon Park, Pune'),
+('Rohan', 'Singh', '1997-05-14', 'Male', '110 Hazaribagh Road, Ranchi'),
+('Neha', 'Joshi', '1984-04-28', 'Female', '25 Jubilee Hills, Hyderabad');
+
 
 -- Insert into Suspects Table
 INSERT INTO Suspects (FirstName, LastName, DateOfBirth, Gender, ContactInfo) VALUES
-('Mike', 'White', '1975-10-05', 'Male', '321 Elm St, NY'),
-('Sarah', 'Harris', '1988-06-25', 'Female', '654 Pine Ave, LA'),
-('Tom', 'Clark', '1980-02-14', 'Male', '987 Oak Ln, TX'),
-('Jessica', 'Lewis', '1992-12-03', 'Female', '258 Maple St, FL'),
-('Robert', 'Walker', '1983-08-19', 'Male', '369 Walnut Rd, IL'),
-('Anna', 'Hall', '1991-07-12', 'Female', '741 Birch Ln, CA'),
-('James', 'Allen', '1978-11-30', 'Male', '852 Willow St, WA'),
-('Emily', 'Young', '1996-05-06', 'Female', '159 Chestnut Ave, NV'),
-('Daniel', 'King', '1985-09-28', 'Male', '357 Cedar Ln, CO'),
-('Laura', 'Wright', '1982-03-22', 'Female', '456 Spruce Rd, AZ');
+('Rakesh', 'Kumar', '1975-10-05', 'Male', '12 Daryaganj, Delhi'),
+('Meena', 'Rao', '1988-06-25', 'Female', '18 Mylapore, Chennai'),
+('Vikram', 'Naik', '1980-02-14', 'Male', '20 JP Nagar, Bangalore'),
+('Pooja', 'Kapoor', '1992-12-03', 'Female', '14 Satellite, Ahmedabad'),
+('Manoj', 'Yadav', '1983-08-19', 'Male', '77 Kukatpally, Hyderabad'),
+('Lalitha', 'Pillai', '1991-07-12', 'Female', '33 MG Road, Kochi'),
+('Ajay', 'Thakur', '1978-11-30', 'Male', '23 Sector 22, Chandigarh'),
+('Divya', 'Shetty', '1996-05-06', 'Female', '40 FC Road, Pune'),
+('Nikhil', 'Roy', '1985-09-28', 'Male', '89 Harmu Colony, Ranchi'),
+('Suman', 'Pandey', '1982-03-22', 'Female', '60 Ameerpet, Hyderabad');
+
 
 -- Insert into Law Enforcement Agencies Table
 INSERT INTO LawEnforcementAgencies (AgencyName, Jurisdiction, ContactInfo) VALUES
-('NY Police Dept', 'New York', '100 Police Plaza, NY'),
-('LA Police Dept', 'Los Angeles', '200 LAPD St, LA'),
-('TX State Police', 'Texas', '300 TX St, TX'),
-('FL Sheriff Office', 'Florida', '400 FL Blvd, FL'),
-('IL Highway Patrol', 'Illinois', '500 IL Ave, IL'),
-('CA Crime Bureau', 'California', '600 CA St, CA'),
-('WA State Troopers', 'Washington', '700 WA Ln, WA'),
-('NV Metro Police', 'Nevada', '800 NV Rd, NV'),
-('CO Crime Investigators', 'Colorado', '900 CO Blvd, CO'),
-('AZ Public Safety', 'Arizona', '1000 AZ St, AZ');
+('Delhi Police', 'Delhi', 'Police HQ, ITO, Delhi'),
+('Chennai Police', 'Chennai', 'Commissioner Office, Egmore, Chennai'),
+('Bangalore Police', 'Bangalore', 'Infantry Road HQ, Bangalore'),
+('Ahmedabad Police', 'Ahmedabad', 'Shahibaug HQ, Ahmedabad'),
+('Hyderabad Police', 'Hyderabad', 'Basheerbagh, Hyderabad'),
+('Kochi City Police', 'Kochi', 'Marine Drive HQ, Kochi'),
+('Chandigarh Police', 'Chandigarh', 'Sector 9, Chandigarh'),
+('Pune Police', 'Pune', 'Commissioner Office, Shivajinagar, Pune'),
+('Ranchi Police', 'Ranchi', 'Doranda HQ, Ranchi'),
+('Telangana CID', 'Telangana', 'CID Complex, Nampally, Hyderabad');
+
 
 -- Insert into Officers Table
 INSERT INTO Officers (FirstName, LastName, BadgeNumber, RankID, ContactInfo, AgencyID) VALUES
-('Mark', 'Brown', '12345', 'Sergeant', 'mark@police.com', 1),
-('Lisa', 'Davis', '67890', 'Lieutenant', 'lisa@police.com', 2),
-('Kevin', 'Johnson', '11111', 'Detective', 'kevin@police.com', 3),
-('Emma', 'Williams', '22222', 'Captain', 'emma@police.com', 4),
-('Chris', 'Martinez', '33333', 'Officer', 'chris@police.com', 5),
-('Sophia', 'Garcia', '44444', 'Lieutenant', 'sophia@police.com', 6),
-('Daniel', 'Rodriguez', '55555', 'Sergeant', 'daniel@police.com', 7),
-('Olivia', 'Lopez', '66666', 'Detective', 'olivia@police.com', 8),
-('Ethan', 'Hernandez', '77777', 'Officer', 'ethan@police.com', 9),
-('Charlotte', 'Moore', '88888', 'Captain', 'charlotte@police.com', 10);
+('Rajesh', 'Shukla', 'IN12345', 'Inspector', 'rajesh.shukla@delhipolice.in', 1),
+('Lakshmi', 'Venkatesan', 'IN67890', 'Sub-Inspector', 'lakshmi.venkatesan@chennaipolice.in', 2),
+('Karthik', 'Rao', 'IN11111', 'DSP', 'karthik.rao@blrcitypolice.in', 3),
+('Nidhi', 'Deshmukh', 'IN22222', 'ACP', 'nidhi.deshmukh@ahdpolice.in', 4),
+('Arvind', 'Rao', 'IN33333', 'SI', 'arvind.rao@hydpolice.in', 5),
+('Shalini', 'Menon', 'IN44444', 'ACP', 'shalini.menon@kochicitypolice.in', 6),
+('Harsh', 'Singh', 'IN55555', 'Inspector', 'harsh.singh@chandigarhpolice.in', 7),
+('Preeti', 'Kulkarni', 'IN66666', 'DSP', 'preeti.kulkarni@punepolice.in', 8),
+('Abhishek', 'Verma', 'IN77777', 'SI', 'abhishek.verma@ranchipolice.in', 9),
+('Deepika', 'Rathi', 'IN88888', 'ACP', 'deepika.rathi@telanganacid.in', 10);
 
 -- Insert into Incidents Table
 INSERT INTO Incidents (IncidentType, IncidentDate, Location, Description, Status, VictimID, SuspectID, OfficerID) VALUES
-('Robbery', '2023-01-15', 'Downtown NY', 'Bank robbery reported', 'Open', 1, 1, 1),
-('Homicide', '2023-02-10', 'Central Park', 'Murder case investigation', 'Under Investigation', 2, 2, 2),
-('Theft', '2023-03-05', 'Supermarket, TX', 'Shoplifting case', 'Closed', 3, 3, 3),
-('Burglary', '2023-04-20', 'Residential Area, LA', 'House break-in reported', 'Open', 4, 4, 4),
-('Assault', '2023-05-18', 'Street, FL', 'Physical altercation', 'Under Investigation', 5, 5, 5),
-('Drug Possession', '2023-06-25', 'Highway, IL', 'Illegal drugs found', 'Closed', 6, 6, 6),
-('Fraud', '2023-07-14', 'Bank, CA', 'Credit card fraud case', 'Open', 7, 7, 7),
-('Kidnapping', '2023-08-29', 'Park, WA', 'Child missing case', 'Under Investigation', 8, 8, 8),
-('Vandalism', '2023-09-12', 'School, NV', 'Graffiti on school walls', 'Closed', 9, 9, 9),
-('Arson', '2023-10-08', 'Warehouse, CO', 'Intentional fire reported', 'Open', 10, 10, 10);
+('Robbery', '2023-01-15', 'Karol Bagh, Delhi', 'Jewelry store robbery reported', 'Open', 1, 1, 1),
+('Homicide', '2023-02-10', 'Marina Beach, Chennai', 'Homicide investigation', 'Under Investigation', 2, 2, 2),
+('Theft', '2023-03-05', 'Forum Mall, Bangalore', 'Mobile phone theft case', 'Closed', 3, 3, 3),
+('Burglary', '2023-04-20', 'Maninagar, Ahmedabad', 'Home burglary reported', 'Open', 4, 4, 4),
+('Assault', '2023-05-18', 'Charminar, Hyderabad', 'Street fight case', 'Under Investigation', 5, 5, 5),
+('Drug Possession', '2023-06-25', 'Vytilla Junction, Kochi', 'Narcotics found in vehicle', 'Closed', 6, 6, 6),
+('Fraud', '2023-07-14', 'Bank of India, Chandigarh', 'ATM fraud complaint', 'Open', 7, 7, 7),
+('Kidnapping', '2023-08-29', 'Camp Area, Pune', 'Child kidnapping case', 'Under Investigation', 8, 8, 8),
+('Vandalism', '2023-09-12', 'St. Xavier’s School, Ranchi', 'School walls vandalized', 'Closed', 9, 9, 9),
+('Arson', '2023-10-08', 'Industrial Area, Hyderabad', 'Warehouse set on fire', 'Open', 10, 10, 10);
+
 
 -- Insert into Evidence Table
 INSERT INTO Evidence (Description, LocationFound, IncidentID) VALUES
-('Fingerprint found', 'Vault door', 1),
-('Blood sample', 'Crime scene', 2),
-('Security footage', 'Supermarket camera', 3),
-('Broken window', 'House entrance', 4),
-('Weapon found', 'Near assault site', 5),
-('Drug packets', 'Car trunk', 6),
-('Forged documents', 'Bank office', 7),
-('Child’s toy', 'Park bench', 8),
-('Spray paint can', 'School dumpster', 9),
-('Burned matchstick', 'Warehouse debris', 10);
+('Gold chain recovered', 'Back alley, Karol Bagh', 1),
+('Knife with blood stains', 'Near Marina Beach', 2),
+('CCTV footage', 'Forum Mall security room', 3),
+('Broken lock', 'Main door, Maninagar house', 4),
+('Iron rod used in fight', 'Charminar street', 5),
+('Brown powder packets', 'Car boot, Vytilla', 6),
+('Fake ATM card', 'Bank CCTV footage', 7),
+('Child’s shoe', 'Park near Camp Area', 8),
+('Spray cans', 'School grounds', 9),
+('Burnt documents', 'Warehouse floor', 10);
+
 
 
 select * from Incidents;
@@ -163,4 +168,5 @@ select * from victims;
 select * from suspects;
 select * from officers;
 select * from reports;
+
 
